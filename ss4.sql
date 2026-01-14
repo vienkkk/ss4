@@ -1,10 +1,10 @@
 create database ss4;
 use ss4;
-create table Reader(
-    reader_id int primary key auto_increment,
-    reader_name varchar(100) not null,
-    phone varchar(15) unique,
-    register date default(current_date())
+CREATE TABLE Reader (
+    reader_id INT PRIMARY KEY AUTO_INCREMENT,
+    reader_name VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) UNIQUE,
+    register_date DATE DEFAULT (CURRENT_DATE)
 );
 
 create table book(
@@ -53,3 +53,32 @@ VALUES
 (1, 101, '2024-09-15', NULL),
 (1, 102, '2024-09-15', '2024-09-25'),
 (2, 103, '2024-09-18', NULL);
+
+UPDATE Borrow
+SET return_date = '2024-10-01'
+WHERE reader_id = 1;
+
+UPDATE Book
+SET publish_year = 2023
+WHERE publish_year >= 2021;
+
+DELETE FROM Borrow
+WHERE borrow_date < '2024-09-18';
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE Borrow
+SET return_date = '2024-10-01'
+WHERE reader_id = 1;
+
+UPDATE Book
+SET publish_year = 2023
+WHERE publish_year >= 2021;
+
+DELETE FROM Borrow
+WHERE borrow_date < '2024-09-18';
+
+SELECT * FROM Reader;
+SELECT * FROM Book;
+SELECT * FROM Borrow;
+
